@@ -1,0 +1,14 @@
+---
+name: redis
+
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+- redis
+
+properties: 
+  redis:
+    description: "I don't know what we're doing"
+  APP_ROOT:
+    default: "/var/vcap/jobs/redis/packages/redis"

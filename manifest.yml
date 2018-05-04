@@ -1,0 +1,32 @@
+name: dandy-redis
+
+releases:
+- name: dandy-redis
+  version: latest
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: 3541.12
+
+update:
+  canaries: 1
+  max_in_flight: 10
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+instance_groups:
+- name: redis-server
+  instances: 1
+  azs: 
+    - z1
+  jobs:
+  - name: redis
+    release: dandy-redis
+    properties:
+      port: 3606
+  vm_type: minimal
+  stemcell: default
+  persistent_disk_type: 1GB
+  networks:
+  - name: default

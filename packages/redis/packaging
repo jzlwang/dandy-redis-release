@@ -1,0 +1,10 @@
+set -e -x
+
+echo "Extracting redis..."
+tar xzvf redis/redis-4.0.9.tar.gz
+
+echo "Building redis..."
+
+pushd redis-4.0.9
+  make
+popd
